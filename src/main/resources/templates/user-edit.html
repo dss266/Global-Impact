@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:insert="_template :: head"></head>
+<body>
+	<nav th:insert="_sidebar :: sidebar"
+		class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white"></nav>
+
+	<!-- Main content -->
+	<div class="main-content" id="panel">
+		<nav th:insert="_template :: navigation-bar"></nav>
+		<div class="header bg-primary pb-6">
+			<div class="container-fluid">
+				<div class="header-body">
+					<div class="row align-items-center py-4">
+						<div class="col-lg-6 col-7">
+							<h6 class="h2 text-white d-inline-block mb-0">Edicao de Usuario</h6>
+						</div>
+						<div class="col-lg-6 col-5 text-right">
+							<a href="#" class="btn btn-sm btn-neutral">New</a> <a href="#"
+								class="btn btn-sm btn-neutral">Filters</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Page content -->
+		<div class="container-fluid mt--6">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card-wrapper">
+						<!-- Input groups -->
+						<div class="card">
+							<!-- Card header -->
+							<div class="card-header">
+								<h3 class="mb-0">Editar Usuario</h3>
+							</div>
+							<!-- Card body -->
+							<div class="card-body">
+								<form th:action="@{/user/update/}+${id}" method="post"
+									th:object="${user}">
+									<!-- Input groups with icon -->
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-control-label">Nome</label>
+												<div class="input-group input-group-merge">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+															class="fas fa-user"></i></span>
+													</div>
+													<input class="form-control" type="text" name="name"
+														id="name" placeholder="nome" th:field="*{name}"
+														th:classappend="${#fields.hasErrors('name')}?invalid"
+														autocomplete="off" th:value="${name}">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-control-label">E-mail</label>
+												<div class="input-group input-group-merge">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+															class="fas fa-envelope"></i></span>
+													</div>
+													<input class="form-control" type="email" name="email"
+														placeholder="e-mail" id="email" th:field="*{email}"
+														th:classappend="${#fields.hasErrors('email')}?invalid"
+														autocomplete="off" th:value="${email}">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group">
+												<label class="form-control-label">CNPJ</label>
+												<div class="input-group input-group-merge">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+															class="fas fa-user"></i></span>
+													</div>
+													<input class="form-control" type="text" name="cnpj"
+														id="cnpj" placeholder="CNPJ" th:field="*{cnpj}"
+														th:classappend="${#fields.hasErrors('cnpj')}?invalid"
+														autocomplete="off" th:value="${cnpj}">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group">
+												<label class="form-control-label">Telefone</label>
+												<div class="input-group input-group-merge">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+															class="fas fa-user"></i></span>
+													</div>
+													<input class="form-control" type="text" name="phone"
+														id="phone" placeholder="Telefone" th:field="*{phone}"
+														th:classappend="${#fields.hasErrors('phone')}?invalid"
+														autocomplete="off" th:value="${phone}">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="form-control-label">Rua</label>
+												<div class="input-group input-group-merge">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+															class="fas fa-user"></i></span>
+													</div>
+													<input class="form-control" type="text" name="street"
+														id="street" placeholder="Rua" th:field="*{address.street}"
+														th:classappend="${#fields.hasErrors('address.street')}?invalid"
+														autocomplete="off" th:value="${address?.street}">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-1">
+											<div class="form-group">
+												<label class="form-control-label">Numero</label>
+												<div class="input-group input-group-merge">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+															class="fas fa-envelope"></i></span>
+													</div>
+													<input class="form-control" type="text" name="number"
+														placeholder="Número" id="number"
+														th:field="*{address.number}"
+														th:classappend="${#fields.hasErrors('address.number')}?invalid"
+														autocomplete="off" th:value="${address?.number}">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-control-label">Bairro</label>
+												<div class="input-group input-group-merge">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+															class="fas fa-user"></i></span>
+													</div>
+													<input class="form-control" type="text" name="district"
+														id="district" placeholder="Bairro"
+														th:field="*{address.district}"
+														th:classappend="${#fields.hasErrors('address.district')}?invalid"
+														autocomplete="off" th:value="${address?.district}">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="form-control-label">Cidade</label>
+												<div class="input-group input-group-merge">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+															class="fas fa-user"></i></span>
+													</div>
+													<input class="form-control" type="text" name="city"
+														id="city" placeholder="Cidade" th:field="*{address.city}"
+														th:classappend="${#fields.hasErrors('address.city')}?invalid"
+														autocomplete="off" th:value="${address?.city}">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-1">
+											<div class="form-group">
+												<label class="form-control-label">Estado</label>
+												<div class="input-group input-group-merge">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+															class="fas fa-envelope"></i></span>
+													</div>
+													<input class="form-control" type="text" name="state"
+														placeholder="Estado" id="state"
+														th:field="*{address.state}"
+														th:classappend="${#fields.hasErrors('address.state')}?invalid"
+														autocomplete="off" th:value="${address?.state}">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="form-control-label">Redefinir Senha</label>
+												<div class="input-group input-group-merge">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+															class="fas fa-user"></i></span>
+													</div>
+													<input class="form-control" type="text" name="password"
+														id="password" placeholder="Senha" th:field="*{password}"
+														th:classappend="${#fields.hasErrors('password')}?invalid"
+														autocomplete="off" th:value="${password}">
+												</div>
+											</div>
+										</div>
+									</div>
+									<button class="btn btn-primary" type="submit">Submit form</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer th:insert="_template :: footer"></footer>
+		</div>
+		</div>
+		<th:block th:insert="_template :: assets"></th:block>
+</body>
+
+</html>

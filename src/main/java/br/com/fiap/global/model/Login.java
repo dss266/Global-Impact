@@ -1,4 +1,4 @@
-package br.com.fiap.tds.model;
+package br.com.fiap.global.model;
 
 import javax.validation.constraints.NotBlank;
 
@@ -8,7 +8,7 @@ import lombok.Data;
 public class Login {
 
 	@NotBlank
-	private String username;
+	private String email;
 	
 	@NotBlank
 	private String password;

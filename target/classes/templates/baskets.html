@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:insert="_template :: head"></head>
+<body>
+	<nav th:insert="_sidebar :: sidebar"
+		class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white"></nav>
+  <!-- Main content -->
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+	<nav th:insert="_template :: navigation-bar"></nav>
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Cestas</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header border-0">
+          <div class="row">
+            <div class="col-6">
+              <h3 class="mb-0">Cestas</h3>
+            </div>
+            <div class="col-6 text-right">
+              <a href="/basket/new" class="btn btn-sm btn-primary btn-round btn-icon" data-toggle="tooltip" data-original-title="Create basket">
+                <span class="btn-inner--icon"><i class="ni ni-basket"></i></span>
+                <span class="btn-inner--text">Nova Cesta</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Light table -->
+        <div class="table-responsive">
+        <form action="">
+        	          <table class="table align-items-center table-flush table-striped">
+            <thead class="thead-light">
+              <tr>
+                <th>Descricao</th>
+                <th>Preco</th>
+                
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="basket : ${baskets}">
+                <td>
+                  <a th:text="${basket.description}" th:href="${'/basket/details/' + basket.id }" class="font-weight-bold"></a>
+                </td>
+                <td>
+                  <span class="text-muted" th:text="${basket.price}"></span>
+                </td>
+
+                <td class="table-actions">
+                  <a href="#!" class="table-action" data-toggle="tooltip" data-original-title="Edit product">
+                    <i class="fas fa-user-edit"></i>
+                  </a>
+                  <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+		</div>
+      </div>
+		<footer th:insert="_template :: footer"></footer>
+    </div>
+  </div>
+<th:block th:insert="_template :: assets"></th:block>
+</body>
+
+</html>
